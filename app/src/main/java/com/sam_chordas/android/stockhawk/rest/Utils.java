@@ -1,10 +1,16 @@
 package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.ContentProviderOperation;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
 
+import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.service.StockTaskService;
 
 import java.util.ArrayList;
 
@@ -18,19 +24,24 @@ public class Utils {
 
     public static boolean showPercent = true;
 
-    public static ArrayList quoteJsonToContentVals(String JSON) {
+    public static ArrayList quoteJsonToContentVals(String JSON, Context context) {
+
         ArrayList<ContentProviderOperation> batchOperations = new ArrayList<>();
         JSONObject jsonObject = null;
         JSONArray resultsArray = null;
+
         try {
             jsonObject = new JSONObject(JSON);
+
             if (jsonObject != null && jsonObject.length() != 0) {
                 jsonObject = jsonObject.getJSONObject("query");
                 int count = Integer.parseInt(jsonObject.getString("count"));
+
                 if (count == 1) {
                     jsonObject = jsonObject.getJSONObject("results")
                             .getJSONObject("quote");
                     batchOperations.add(buildBatchOperation(jsonObject));
+
                 } else {
                     resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");
 
@@ -42,8 +53,11 @@ public class Utils {
                     }
                 }
             }
+            setStockStatus(context, StockTaskService.STOCK_STATUS_OK);
+
         } catch (JSONException e) {
             Log.e(LOG_TAG, "String to JSON failed: " + e);
+            setStockStatus(context, StockTaskService.STOCK_STATUS_SERVER_INVALID);
         }
         return batchOperations;
     }
@@ -56,10 +70,12 @@ public class Utils {
     public static String truncateChange(String change, boolean isPercentChange) {
         String weight = change.substring(0, 1);
         String ampersand = "";
+
         if (isPercentChange) {
             ampersand = change.substring(change.length() - 1, change.length());
             change = change.substring(0, change.length() - 1);
         }
+
         change = change.substring(1, change.length());
         double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
         change = String.format("%.2f", round);
@@ -91,5 +107,20 @@ public class Utils {
             e.printStackTrace();
         }
         return builder.build();
+    }
+
+    static public void setStockStatus(Context c, @StockTaskService.StockStatus int stockStatus) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
+        SharedPreferences.Editor spe = sp.edit();
+        spe.putInt(c.getString(R.string.pref_stock_status_key), stockStatus);
+        spe.commit();
+    }
+
+    @SuppressWarnings("ResourceType")
+    static public @StockTaskService.StockStatus
+    int getStockStatus(Context c){
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
+        return sp.getInt(c.getString(R.string.pref_stock_status_key), StockTaskService.STOCK_STATUS_UNKNOWN);
     }
 }

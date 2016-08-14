@@ -40,8 +40,6 @@ import com.sam_chordas.android.stockhawk.touch_helper.SimpleItemTouchHelperCallb
 public class MyStocksActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
@@ -130,7 +128,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 } else {
                     networkToast();
                 }
-
             }
         });
 
@@ -159,7 +156,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             GcmNetworkManager.getInstance(this).schedule(periodicTask);
         }
     }
-
 
     @Override
     public void onResume() {
@@ -229,22 +225,23 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         mCursorAdapter.swapCursor(null);
     }
 
- /* static public boolean isNetworkAvailable(Context c) {
-      ConnectivityManager cm =
-              (ConnectivityManager)c.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-      NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-      return activeNetwork != null &&
-              activeNetwork.isConnectedOrConnecting();
-  }*/
-
     private void updateEmptyView() {
         if (mCursorAdapter.getItemCount() == 0) {
             TextView tv = (TextView) findViewById(R.id.recycler_stock_empty);
             if (null != tv) {
                 int message = R.string.empty_stock_list;
-                if (isConnected) {
-                    message = R.string.empty_stock_list_no_network;
+                @StockTaskService.StockStatus int status = Utils.getStockStatus(mContext);
+                switch (status) {
+                    case StockTaskService.STOCK_STATUS_SERVER_DOWN:
+                        message = R.string.empty_stock_list_server_down;
+                        break;
+                    case StockTaskService.STOCK_STATUS_SERVER_INVALID:
+                        message = R.string.empty_stock_list_server_error;
+                        break;
+                    default:
+                        if (!isConnected) {
+                            message = R.string.empty_stock_list_no_network;
+                        }
                 }
                 tv.setText(message);
             }
