@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
@@ -40,7 +41,14 @@ public class Utils {
                 if (count == 1) {
                     jsonObject = jsonObject.getJSONObject("results")
                             .getJSONObject("quote");
-                    batchOperations.add(buildBatchOperation(jsonObject));
+                    //batchOperations.add(buildBatchOperation(jsonObject));
+                    // if stock is invalid
+                    if (jsonObject.getString("bid").equals("null") || jsonObject.getString("bid") == null) {
+                        //Toast.makeText(context, context.getString(R.string.invalid_stock_symbol), Toast.LENGTH_LONG).show();
+                        return null;
+                    } else {
+                        batchOperations.add(buildBatchOperation(jsonObject));
+                    }
 
                 } else {
                     resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");

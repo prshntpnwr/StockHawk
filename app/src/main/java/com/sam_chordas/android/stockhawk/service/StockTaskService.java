@@ -1,7 +1,9 @@
 package com.sam_chordas.android.stockhawk.service;
 
+import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -29,6 +31,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.net.URLEncoder;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
+
 /**
  * The GCMTask service is primarily for periodic tasks. However, OnRunTask can be called directly
  * and is used for the initialization and adding task as well.
@@ -142,17 +146,29 @@ public class StockTaskService extends GcmTaskService {
                         mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                                 null, null);
                     }
-                    mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
-                            Utils.quoteJsonToContentVals(getResponse, mContext));
+
+                    //mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
+                      //      Utils.quoteJsonToContentVals(getResponse, mContext));
+
+                    ArrayList<ContentProviderOperation> batchOperations = Utils.quoteJsonToContentVals(getResponse, mContext);
+
+                    if(batchOperations != null && batchOperations.size() > 0) {
+                        mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY, batchOperations);
+                    }else{
+                        Intent intent = new Intent();
+                        intent.setAction("com.sam_chordas.android.stockhawk.service.InvalidStockSymbol");
+                        mContext.sendBroadcast(intent);
+                    }
+
                 } catch (RemoteException | OperationApplicationException e) {
                     Log.e(LOG_TAG, "Error applying batch insert", e);
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
                 Utils.setStockStatus(mContext, STOCK_STATUS_SERVER_DOWN);
             }
         }
-
         return result;
     }
 
