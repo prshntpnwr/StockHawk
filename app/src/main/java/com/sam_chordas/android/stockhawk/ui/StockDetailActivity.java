@@ -29,16 +29,23 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     ArrayList<StockSymbol> stockSymbols;
 
     //LineChartView lineChart;
-    @BindView(R.id.linechart) LineChartView lineChart;
+    @BindView(R.id.linechart)
+    LineChartView lineChart;
 
     LinearLayout linearLayout;
 
-    @BindView(R.id.stock_detail_name) TextView stockName;
-    @BindView(R.id.stock_detail_symbol) TextView stockSymbol;
-    @BindView(R.id.stock_detail_first) TextView firstTrade;
-    @BindView(R.id.stock_detail_last) TextView lastTrade;
-    @BindView(R.id.stock_detail_currency) TextView currency;
-    @BindView(R.id.stock_detail_bid) TextView tvBidPrice;
+    @BindView(R.id.stock_detail_name)
+    TextView stockName;
+    @BindView(R.id.stock_detail_symbol)
+    TextView stockSymbol;
+    @BindView(R.id.stock_detail_first)
+    TextView firstTrade;
+    @BindView(R.id.stock_detail_last)
+    TextView lastTrade;
+    @BindView(R.id.stock_detail_currency)
+    TextView currency;
+    @BindView(R.id.stock_detail_bid)
+    TextView tvBidPrice;
 
     String symbol;
     String bidPrice;
@@ -101,16 +108,8 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
                 .beginAt(5);
         lineChart.addData(dataset);
         lineChart.setAxisThickness(3);
-        lineChart.addData(dataset);
         lineChart.setXLabels(AxisController.LabelPosition.OUTSIDE);
         lineChart.setYLabels(AxisController.LabelPosition.INSIDE);
-
-        lineChart.setBorderSpacing(Tools.fromDpToPx(15))
-                .setAxisBorderValues(0, 20)
-                .setYLabels(AxisController.LabelPosition.NONE)
-                .setLabelsColor(Color.parseColor("#6a84c3"))
-                .setXAxis(false)
-                .setYAxis(false);
 
         lineChart.show();
     }
