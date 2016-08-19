@@ -31,6 +31,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.sam_chordas.android.stockhawk.ui.StockDetailActivity"
+            android:parentActivityName=".ui.MyStocksActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MyStocksActivity" />
+        </activity>
+
         <service
             android:name="com.sam_chordas.android.stockhawk.service.StockTaskService"
             android:exported="true"
