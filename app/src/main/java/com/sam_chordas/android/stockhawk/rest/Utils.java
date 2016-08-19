@@ -125,10 +125,22 @@ public class Utils {
     }
 
     @SuppressWarnings("ResourceType")
-    static public @StockTaskService.StockStatus
-    int getStockStatus(Context c){
+    static public
+    @StockTaskService.StockStatus
+    int getStockStatus(Context c) {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
         return sp.getInt(c.getString(R.string.pref_stock_status_key), StockTaskService.STOCK_STATUS_UNKNOWN);
     }
+
+    public static String convertDate(String inputDate) {
+        StringBuilder outputFormattedDate = new StringBuilder();
+        outputFormattedDate.append(inputDate.substring(6))
+                .append("/")
+                .append(inputDate.substring(4, 6))
+                .append("/")
+                .append(inputDate.substring(2, 4));
+        return outputFormattedDate.toString();
+    }
+    
 }
