@@ -20,15 +20,25 @@ import com.sam_chordas.android.stockhawk.service.StockHistoricData.StockSymbol;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StockDetailActivity extends AppCompatActivity implements StockHistoricData.HistoricCallback {
 
     StockHistoricData historicData;
     ArrayList<StockSymbol> stockSymbols;
 
-    LineChartView lineChart;
+    //LineChartView lineChart;
+    @BindView(R.id.linechart) LineChartView lineChart;
+
     LinearLayout linearLayout;
 
-    TextView stockName, stockSymbol, firstTrade, lastTrade, currency, tvBidPrice, exchangeName;
+    @BindView(R.id.stock_detail_name) TextView stockName;
+    @BindView(R.id.stock_detail_symbol) TextView stockSymbol;
+    @BindView(R.id.stock_detail_first) TextView firstTrade;
+    @BindView(R.id.stock_detail_last) TextView lastTrade;
+    @BindView(R.id.stock_detail_currency) TextView currency;
+    @BindView(R.id.stock_detail_bid) TextView tvBidPrice;
 
     String symbol;
     String bidPrice;
@@ -37,17 +47,9 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_graph);
+        ButterKnife.bind(this);
 
-        //Binding views
-        lineChart = (LineChartView) findViewById(R.id.linechart);
-//        lineChart.setNoDataText(getString(R.string.loading_stock_data));
-
-        stockName = (TextView) findViewById(R.id.stock_detail_name);
-        stockSymbol = (TextView) findViewById(R.id.stock_detail_symbol);
-        firstTrade = (TextView) findViewById(R.id.stock_detail_first);
-        lastTrade = (TextView) findViewById(R.id.stock_detail_last);
-        currency = (TextView) findViewById(R.id.stock_detail_currency);
-        tvBidPrice = (TextView) findViewById(R.id.stock_detail_bid);
+        // lineChart.setNoDataText(getString(R.string.loading_stock_data));
 
         //Getting Values from intents
         symbol = getIntent().getStringExtra(QuoteColumns.SYMBOL);
