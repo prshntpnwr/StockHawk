@@ -34,18 +34,12 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
     LinearLayout linearLayout;
 
-    @BindView(R.id.stock_detail_name)
-    TextView stockName;
-    @BindView(R.id.stock_detail_symbol)
-    TextView stockSymbol;
-    @BindView(R.id.stock_detail_first)
-    TextView firstTrade;
-    @BindView(R.id.stock_detail_last)
-    TextView lastTrade;
-    @BindView(R.id.stock_detail_currency)
-    TextView currency;
-    @BindView(R.id.stock_detail_bid)
-    TextView tvBidPrice;
+    @BindView(R.id.stock_detail_name) TextView stockName;
+    @BindView(R.id.stock_detail_symbol) TextView stockSymbol;
+    @BindView(R.id.stock_detail_first) TextView firstTrade;
+    @BindView(R.id.stock_detail_last) TextView lastTrade;
+    @BindView(R.id.stock_detail_currency) TextView currency;
+    @BindView(R.id.stock_detail_bid) TextView tvBidPrice;
 
     String symbol;
     String bidPrice;
@@ -55,8 +49,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_graph);
         ButterKnife.bind(this);
-
-        // lineChart.setNoDataText(getString(R.string.loading_stock_data));
+//        lineChart.setNoDataText(getString(R.string.loading_stock_data));
 
         //Getting Values from intents
         symbol = getIntent().getStringExtra(QuoteColumns.SYMBOL);
