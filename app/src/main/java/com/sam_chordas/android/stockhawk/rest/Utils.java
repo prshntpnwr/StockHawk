@@ -43,7 +43,7 @@ public class Utils {
                             .getJSONObject("quote");
                     //batchOperations.add(buildBatchOperation(jsonObject));
                     // if stock is invalid
-                    if (jsonObject.getString("bid").equals("null") || jsonObject.getString("bid") == null) {
+                    if (jsonObject.getString("Bid").equals("null") || jsonObject.getString("Bid") == null) {
                         //Toast.makeText(context, context.getString(R.string.invalid_stock_symbol), Toast.LENGTH_LONG).show();
                         return null;
                     } else {
