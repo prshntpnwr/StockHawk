@@ -59,6 +59,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_graph);
         ButterKnife.bind(this);
@@ -90,6 +91,8 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
     @Override
     public void onSuccess(StockMeta stockMeta) {
+
+        ButterKnife.bind(this);
         emptyView.setVisibility(View.GONE);
 
         stockName.setText(stockMeta.getStockName());
@@ -141,13 +144,13 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
                 .setGrid(ChartView.GridType.FULL, 5, 5, gridPaint)
                 .setValueThreshold(80f, 80f, thresPaint);
 
-
         lineChart.show();
     }
 
     @Override
     public void onFailure() {
 
+        ButterKnife.bind(this);
         emptyView.setVisibility(View.VISIBLE);
         String errorMessage = "";
 
@@ -182,11 +185,11 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
                         historicData.getHistoricData(symbol);
                     }
                 })
-                .setActionTextColor(Color.GREEN);
+                .setActionTextColor(Color.WHITE);
 
         View subview = snackbar.getView();
         TextView tv = (TextView) subview.findViewById(android.support.design.R.id.snackbar_text);
-        tv.setTextColor(Color.RED);
+        tv.setTextColor(Color.WHITE);
         snackbar.show();
     }
 }
