@@ -51,15 +51,16 @@ public class StockHistoricData {
         void onFailure();
     }
 
-    //to indicate errors encountered.
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({STATUS_OK, STATUS_ERROR_JSON, STATUS_ERROR_SERVER})
+    @IntDef({STATUS_OK, STATUS_SERVER_INVALID, STATUS_SERVER_DOWN, STATUS_UNKNOWN})
+
     public @interface HistoricalDataStatuses {
     }
 
     public static final int STATUS_OK = 0;
-    public static final int STATUS_ERROR_JSON = 1;
-    public static final int STATUS_ERROR_SERVER = 2;
+    public static final int STATUS_SERVER_INVALID = 1;
+    public static final int STATUS_SERVER_DOWN = 2;
+    public static final int STATUS_UNKNOWN = 3;
 
     public StockHistoricData(Context context, HistoricCallback callback) {
         mContext = context;
@@ -80,7 +81,7 @@ public class StockHistoricData {
                     getStockMetaFromJson(json);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    setHistoricalDataStatus(STATUS_ERROR_SERVER);
+                    setHistoricalDataStatus(STATUS_SERVER_DOWN);
                 }
                 return null;
             }
@@ -138,7 +139,7 @@ public class StockHistoricData {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            setHistoricalDataStatus(STATUS_ERROR_JSON);
+            setHistoricalDataStatus(STATUS_SERVER_INVALID);
         }
     }
 
