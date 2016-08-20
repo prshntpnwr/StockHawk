@@ -50,5 +50,4 @@
     <string name="a11y_graph">Graph: <xliff:g id="low">%1$s</xliff:g></string>
     <string name="a11y_add_stock">Stock Added: <xliff:g id="low">%1$s</xliff:g></string>
 
-
 </resources>

@@ -13,7 +13,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_symbol"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
@@ -34,7 +34,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
@@ -55,7 +55,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_first"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
@@ -76,7 +76,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_last"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
@@ -97,7 +97,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_currency"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
@@ -118,7 +118,7 @@
         android:gravity="center_vertical"
         android:text="@string/stock_detail_extra_bid"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/stock_grey"
+        android:textColor="@color/grey_700"
         app:layout_columnWeight="1"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
