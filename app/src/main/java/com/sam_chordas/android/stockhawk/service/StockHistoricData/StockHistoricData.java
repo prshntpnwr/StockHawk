@@ -52,7 +52,7 @@ public class StockHistoricData {
     }
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({STATUS_OK, STATUS_SERVER_INVALID, STATUS_SERVER_DOWN, STATUS_UNKNOWN})
+    @IntDef({STATUS_OK, STATUS_SERVER_INVALID, STATUS_SERVER_DOWN, STATUS_UNKNOWN, STATUS_NO_INTERNET})
 
     public @interface HistoricalDataStatuses {
     }
@@ -60,7 +60,8 @@ public class StockHistoricData {
     public static final int STATUS_OK = 0;
     public static final int STATUS_SERVER_INVALID = 1;
     public static final int STATUS_SERVER_DOWN = 2;
-    public static final int STATUS_UNKNOWN = 3;
+    public static final int STATUS_NO_INTERNET = 3;
+    public static final int STATUS_UNKNOWN = 4;
 
     public StockHistoricData(Context context, HistoricCallback callback) {
         mContext = context;

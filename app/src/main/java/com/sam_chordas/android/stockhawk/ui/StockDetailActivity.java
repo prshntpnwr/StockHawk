@@ -4,9 +4,12 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,12 +35,8 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     StockHistoricData historicData;
     ArrayList<StockSymbol> stockSymbols;
 
-    //LineChartView lineChart;
     @BindView(R.id.linechart)
     LineChartView lineChart;
-
-    LinearLayout linearLayout;
-
     @BindView(R.id.stock_detail_name)
     TextView stockName;
     @BindView(R.id.stock_detail_symbol)
@@ -50,6 +49,10 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     TextView currency;
     @BindView(R.id.stock_detail_bid)
     TextView tvBidPrice;
+    @BindView(R.id.detail_empty_view)
+    TextView emptyView;
+    @BindView(R.id.line_graph_layout)
+    LinearLayout linearLayout;
 
     String symbol;
     String bidPrice;
@@ -59,7 +62,6 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_graph);
         ButterKnife.bind(this);
-//        lineChart.setNoDataText(getString(R.string.loading_stock_data));
 
         //Getting Values from intents
         symbol = getIntent().getStringExtra(QuoteColumns.SYMBOL);
@@ -78,16 +80,17 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
         historicData = new StockHistoricData(this, this);
 
-//        if(Utils.isNetworkAvailable(this)) {
-        historicData.getHistoricData(symbol);
-//        }else{
-//            historicData.setHistoricalDataStatus(HistoricData.STATUS_ERROR_NO_NETWORK);
-//            onFailure();
-//        }
+        if (Utils.isNetworkAvailable(this)) {
+            historicData.getHistoricData(symbol);
+        } else {
+            historicData.setHistoricalDataStatus(StockHistoricData.STATUS_NO_INTERNET);
+            onFailure();
+        }
     }
 
     @Override
     public void onSuccess(StockMeta stockMeta) {
+        emptyView.setVisibility(View.GONE);
 
         stockName.setText(stockMeta.getStockName());
         firstTrade.setText(Utils.convertDate(stockMeta.getFirstTrade()));
@@ -145,50 +148,45 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     @Override
     public void onFailure() {
 
-//        String errorMessage = "";
-//
-//        @HistoricData.HistoricalDataStatuses
-//        int status = PreferenceManager.getDefaultSharedPreferences(this)
-//                .getInt(HistoricData.HISTORICAL_DATA_STATUS, -1);
-//
-//        switch (status) {
-//            case HistoricData.STATUS_ERROR_JSON:
-//                errorMessage += getString(R.string.data_error_json);
-//                break;
-//            case HistoricData.STATUS_ERROR_NO_NETWORK:
-//                errorMessage += getString(R.string.data_no_internet);
-//                break;
-//            case HistoricData.STATUS_ERROR_PARSE:
-//                errorMessage += getString(R.string.data_error_parse);
-//                break;
-//            case HistoricData.STATUS_ERROR_UNKNOWN:
-//                errorMessage += getString(R.string.data_unknown_error);
-//                break;
-//            case HistoricData.STATUS_ERROR_SERVER:
-//                errorMessage += getString(R.string.data_server_down);
-//                break;
-//            case HistoricData.STATUS_OK:
-//                errorMessage += getString(R.string.data_no_error);
-//                break;
-//            default:
-//                break;
-//        }
-//
-//        lineChart.setNoDataText(errorMessage);
-//
-//        final Snackbar snackbar = Snackbar
-//                .make(linearLayout, getString(R.string.no_data_show) + errorMessage, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        historicData.getHistoricData(symbol);
-//                    }
-//                })
-//                .setActionTextColor(Color.GREEN);
-//
-//        View subview = snackbar.getView();
-//        TextView tv = (TextView) subview.findViewById(android.support.design.R.id.snackbar_text);
-//        tv.setTextColor(Color.RED);
-//        snackbar.show();
+        emptyView.setVisibility(View.VISIBLE);
+        String errorMessage = "";
+
+        @StockHistoricData.HistoricalDataStatuses
+        int status = PreferenceManager.getDefaultSharedPreferences(this)
+                .getInt(getString(R.string.pref_historic_status_key), -1);
+
+        switch (status) {
+            case StockHistoricData.STATUS_SERVER_INVALID:
+                errorMessage += getString(R.string.error_json);
+                break;
+            case StockHistoricData.STATUS_NO_INTERNET:
+                errorMessage += getString(R.string.no_internet);
+                break;
+            case StockHistoricData.STATUS_SERVER_DOWN:
+                errorMessage += getString(R.string.server_down);
+                break;
+            case StockHistoricData.STATUS_OK:
+                errorMessage += getString(R.string.no_error);
+                break;
+            default:
+                break;
+        }
+
+        emptyView.setText(errorMessage);
+
+        final Snackbar snackbar = Snackbar
+                .make(linearLayout, getString(R.string.no_data) + errorMessage, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.retry, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        historicData.getHistoricData(symbol);
+                    }
+                })
+                .setActionTextColor(Color.GREEN);
+
+        View subview = snackbar.getView();
+        TextView tv = (TextView) subview.findViewById(android.support.design.R.id.snackbar_text);
+        tv.setTextColor(Color.RED);
+        snackbar.show();
     }
 }

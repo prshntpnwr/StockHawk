@@ -3,6 +3,8 @@ package com.sam_chordas.android.stockhawk.rest;
 import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
@@ -142,5 +144,12 @@ public class Utils {
                 .append(inputDate.substring(2, 4));
         return outputFormattedDate.toString();
     }
-    
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+    }
 }
