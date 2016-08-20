@@ -70,7 +70,10 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
         //Setting values to the text
         stockSymbol.setText(symbol);
+        stockSymbol.setContentDescription(stockSymbol.getText());
+
         tvBidPrice.setText(bidPrice);
+        tvBidPrice.setContentDescription(stockSymbol.getText());
 
         ActionBar bar = getSupportActionBar();
         if (bar != null) {
@@ -176,6 +179,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         }
 
         emptyView.setText(errorMessage);
+        emptyView.setContentDescription(emptyView.getText());
 
         final Snackbar snackbar = Snackbar
                 .make(linearLayout, getString(R.string.no_data) + errorMessage, Snackbar.LENGTH_INDEFINITE)

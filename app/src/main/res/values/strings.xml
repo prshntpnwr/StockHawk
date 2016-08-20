@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">Stock Hawk</string>
 
     <string name="action_example">Example action</string>
@@ -42,5 +42,13 @@
     <string name="unknown_error">Some Unknown errors are accrued!</string>
     <string name="server_down">Server is not responding!</string>
     <string name="no_error">No errors!</string>
+
+    <!-- A11y -->
+    <string name="a11y_symbol">Symbol: <xliff:g id="condition">%1$s</xliff:g></string>
+    <string name="a11y_bid_price">Bid Price: <xliff:g id="condition">%1$s</xliff:g></string>
+    <string name="a11y_change">Change: <xliff:g id="high">%1$s</xliff:g></string>
+    <string name="a11y_graph">Graph: <xliff:g id="low">%1$s</xliff:g></string>
+    <string name="a11y_add_stock">Stock Added: <xliff:g id="low">%1$s</xliff:g></string>
+
 
 </resources>
