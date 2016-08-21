@@ -15,35 +15,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <!-- empty view-->
-    <TextView
-        android:id="@+id/recycler_stock_empty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:text="@string/empty_stock_list" />
+        <!-- empty view-->
+        <TextView
+            android:id="@+id/recycler_stock_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/empty_stock_list" />
 
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/a11y_add_stock"
-        android:src="@drawable/ic_add_white_24dp"
-        fab:fab_colorNormal="@color/colorPrimary"
-        fab:fab_colorPressed="@color/colorPrimaryDark"
-        fab:fab_colorRipple="@color/ripple"
-        fab:fab_shadow="true"
-        fab:fab_type="normal"
-        fab:layout_anchor="recycler_view"
-        fab:layout_anchorGravity="bottom | end" />
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/a11y_add_stock"
+            android:src="@drawable/ic_add_white_24dp"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_colorRipple="@color/ripple"
+            fab:fab_shadow="true"
+            fab:fab_type="normal"
+            fab:layout_anchor="recycler_view"
+            fab:layout_anchorGravity="bottom | end" />
     </FrameLayout>
 
 </LinearLayout>
