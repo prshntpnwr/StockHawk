@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,9 +42,9 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     TextView stockName;
     @BindView(R.id.stock_detail_symbol)
     TextView stockSymbol;
-    @BindView(R.id.stock_detail_first)
+    @Nullable@BindView(R.id.stock_detail_first)
     TextView firstTrade;
-    @BindView(R.id.stock_detail_last)
+    @Nullable@BindView(R.id.stock_detail_last)
     TextView lastTrade;
     @BindView(R.id.stock_detail_currency)
     TextView currency;
@@ -65,6 +64,13 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_line_graph);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        supportStartPostponedEnterTransition();
+
 
         ButterKnife.bind(this);
 
@@ -94,7 +100,6 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
             historicData.setHistoricalDataStatus(StockHistoricData.STATUS_NO_INTERNET);
             onFailure();
         }
-
     }
 
     @Override
