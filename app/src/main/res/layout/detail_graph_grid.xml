@@ -14,7 +14,7 @@
         app:layout_gravity="fill_horizontal"
         tools:text="Facebook Inc."
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
         android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
         android:fontFamily="sans-serif"
