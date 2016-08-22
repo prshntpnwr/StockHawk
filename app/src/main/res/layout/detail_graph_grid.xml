@@ -1,33 +1,32 @@
-<!-- Detail Layout for Grid -->
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    app:columnCount="2">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/stock_detail_name"
+        app:layout_columnSpan="2"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal"
+        tools:text="Facebook Inc."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
         android:layout_marginTop="@dimen/abc_list_item_padding_horizontal_material"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/secondary_text"
-        app:layout_columnSpan="2"
-        app:layout_columnWeight="1"
-        app:layout_gravity="fill_horizontal"
-        tools:text="Facebook Inc." />
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/secondary_text" />
 
     <com.db.chart.view.LineChartView
         android:id="@+id/linechart"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/a11y_graph"
-        app:layout_columnSpan="2"
-        app:layout_columnWeight="1"
-        app:layout_gravity="fill_horizontal" />
+        android:layout_width="match_parent"
+        app:layout_gravity="center"
+        android:contentDescription="@string/a11y_graph"/>
 
     <TextView
         android:id="@+id/detail_empty_view"
@@ -37,4 +36,4 @@
         android:text="@string/no_data"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-</android.support.v7.widget.GridLayout>
+</FrameLayout>
