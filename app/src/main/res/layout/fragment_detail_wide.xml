@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Master layout. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/line_graph_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                layout="@layout/detail_graph_grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="0dp" />
+
+        </FrameLayout>
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/detail_additional_pane"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/detail_accent_pane_background"
+            android:paddingEnd="@dimen/abc_list_item_padding_horizontal_material"
+            android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+            app:columnCount="2">
+
+            <android.support.v7.widget.Space
+                app:layout_columnSpan="2"
+                app:layout_rowWeight="1" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:text="@string/stock_detail_extra_symbol"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+            <TextView
+
+                android:id="@+id/stock_detail_symbol"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="FB" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingTop="@dimen/detail_view_extra_padding"
+                android:text="@string/stock_detail_extra_first"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+
+            <TextView
+                android:id="@+id/stock_detail_first"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="29/6/2016" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingTop="@dimen/detail_view_extra_padding"
+                android:text="@string/stock_detail_extra_last"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+            <TextView
+                android:id="@+id/stock_detail_last"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="29/6/2016" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingTop="@dimen/detail_view_extra_padding"
+                android:text="@string/stock_detail_extra_currency"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+            <TextView
+                android:id="@+id/stock_detail_currency"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="USD" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingTop="@dimen/detail_view_extra_padding"
+                android:text="@string/stock_detail_extra_bid"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+            <TextView
+                android:id="@+id/stock_detail_bid"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="214.06" />
+
+            <android.support.v7.widget.Space
+                app:layout_columnSpan="2"
+                app:layout_rowWeight="1" />
+
+        </android.support.v7.widget.GridLayout>
+    </LinearLayout>
+</FrameLayout>
