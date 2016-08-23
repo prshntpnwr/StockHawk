@@ -11,4 +11,8 @@
 
     <!-- Extra Padding -->
     <dimen name="detail_view_extra_padding">@dimen/abc_list_item_padding_horizontal_material</dimen>
+    
+    <!--Appbar elevation -->
+    <dimen name="appbar_elevation">4dp</dimen>
+
 </resources>

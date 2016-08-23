@@ -50,8 +50,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     TextView currency;
     @BindView(R.id.stock_detail_bid)
     TextView tvBidPrice;
-    @BindView(R.id.detail_empty_view)
-    TextView emptyView;
+
     @BindView(R.id.line_graph_layout)
     LinearLayout linearLayout;
 
@@ -63,7 +62,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_line_graph);
+        setContentView(R.layout.fragment_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -106,7 +105,6 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     public void onSuccess(StockMeta stockMeta) {
 
         ButterKnife.bind(this);
-        emptyView.setVisibility(View.GONE);
 
         stockName.setText(stockMeta.getStockName());
         firstTrade.setText(Utils.convertDate(stockMeta.getFirstTrade()));
@@ -164,7 +162,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     public void onFailure() {
 
         ButterKnife.bind(this);
-        emptyView.setVisibility(View.VISIBLE);
+
         String errorMessage = "";
 
         @StockHistoricData.HistoricalDataStatuses
@@ -188,18 +186,15 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
                 break;
         }
 
-        emptyView.setText(errorMessage);
-        emptyView.setContentDescription(emptyView.getText());
-
         final Snackbar snackbar = Snackbar
-                .make(linearLayout, getString(R.string.no_data) + errorMessage, Snackbar.LENGTH_INDEFINITE)
+                .make(linearLayout, errorMessage, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.retry, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         historicData.getHistoricData(symbol);
                     }
                 })
-                .setActionTextColor(Color.WHITE);
+                .setActionTextColor(Color.CYAN);
 
         View subview = snackbar.getView();
         TextView tv = (TextView) subview.findViewById(android.support.design.R.id.snackbar_text);

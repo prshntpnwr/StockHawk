@@ -9,6 +9,8 @@
     android:paddingRight="16dp">
 
     <TextView
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/primary_text"
         android:id="@+id/stock_symbol"
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
@@ -31,6 +33,8 @@
             android:paddingRight="10dp"
             android:paddingEnd="10sp"
             android:paddingStart="10sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/stock_low_text"
             tools:text="1000.00" />
 
         <TextView

@@ -12,8 +12,10 @@
     <color name="grey_700">#646464</color>
     <color name="grey">#cccccc</color>
 
+    <!--our text color -->
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
+    <color name="stock_low_text">#607D8B</color>
 
     <!-- our detail accent colors -->
     <color name="detail_accent_pane_background">#455A64</color>
