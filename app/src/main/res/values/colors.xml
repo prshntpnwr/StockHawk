@@ -7,8 +7,8 @@
     <color name="red_700">#fdff4a4a</color>
     <color name="green_700">#f332cc72</color>
 
-    <color name="stock_white">#ffffff</color>
-    <color name="Stock_black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="grey_700">#646464</color>
     <color name="grey">#cccccc</color>
 
@@ -20,5 +20,8 @@
     <!-- our detail accent colors -->
     <color name="detail_accent_pane_background">#455A64</color>
     <color name="detail_accent_label">#90A4AE</color>
+
+    <!-- the activated state color -->
+    <color name="activated">#E0E0E0</color>
 
 </resources>

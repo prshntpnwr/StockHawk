@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/activity_horizontal_margin"
-    android:background="@color/stock_white"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <TextView

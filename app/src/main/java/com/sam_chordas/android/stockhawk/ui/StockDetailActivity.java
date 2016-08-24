@@ -42,17 +42,16 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     TextView stockName;
     @BindView(R.id.stock_detail_symbol)
     TextView stockSymbol;
-    @Nullable@BindView(R.id.stock_detail_first)
+    @Nullable
+    @BindView(R.id.stock_detail_first)
     TextView firstTrade;
-    @Nullable@BindView(R.id.stock_detail_last)
+    @Nullable
+    @BindView(R.id.stock_detail_last)
     TextView lastTrade;
     @BindView(R.id.stock_detail_currency)
     TextView currency;
     @BindView(R.id.stock_detail_bid)
     TextView tvBidPrice;
-
-    //@BindView(R.id.line_graph_layout)
-   // LinearLayout linearLayout;
 
     String symbol;
     String bidPrice;
@@ -69,7 +68,6 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         supportStartPostponedEnterTransition();
-
 
         ButterKnife.bind(this);
 

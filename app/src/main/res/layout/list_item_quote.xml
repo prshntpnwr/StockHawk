@@ -6,7 +6,12 @@
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:background="@drawable/touch_selector_white">
+    <!--android:background="?attr/selectableItemBackground" -->
 
     <TextView
         android:fontFamily="sans-serif-light"
