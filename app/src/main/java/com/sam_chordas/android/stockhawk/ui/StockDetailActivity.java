@@ -165,7 +165,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
 
         String errorMessage = "";
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.line_graph_layout);
+        View rootView = findViewById(R.id.line_graph_layout);
 
         @StockHistoricData.HistoricalDataStatuses
         int status = PreferenceManager.getDefaultSharedPreferences(this)
@@ -189,7 +189,7 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
         }
 
         final Snackbar snackbar = Snackbar
-                .make(linearLayout, errorMessage, Snackbar.LENGTH_INDEFINITE)
+                .make(rootView, errorMessage, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.retry, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
