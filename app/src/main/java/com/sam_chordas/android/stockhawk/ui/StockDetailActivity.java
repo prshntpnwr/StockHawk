@@ -51,8 +51,8 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     @BindView(R.id.stock_detail_bid)
     TextView tvBidPrice;
 
-    @BindView(R.id.line_graph_layout)
-    LinearLayout linearLayout;
+   // @BindView(R.id.line_graph_layout)
+   // LinearLayout linearLayout;
 
     String symbol;
     String bidPrice;
@@ -162,6 +162,8 @@ public class StockDetailActivity extends AppCompatActivity implements StockHisto
     public void onFailure() {
 
         ButterKnife.bind(this);
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.line_graph_layout);
 
         String errorMessage = "";
 
