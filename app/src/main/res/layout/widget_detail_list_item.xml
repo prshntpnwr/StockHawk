@@ -5,8 +5,8 @@
     android:layout_height="72dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:id="@+id/widget_list_item"
     android:background="@drawable/touch_selector_white">
 
@@ -15,24 +15,24 @@
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
-        android:textColor="@color/grey"
-        android:text="GOOG" />
+        android:gravity="start|center_vertical"
+        android:textColor="@color/black"
+        tools:text="GOOG" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right">
+        android:gravity="end">
 
         <TextView
             android:id="@+id/widget_bid_price"
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10sp"
-            android:text="1000.00"
-            android:textColor="@color/grey"/>
+            android:paddingRight="@dimen/widget_list_padding_right"
+            tools:text="1000.00"
+            android:textColor="@color/detail_accent_label"/>
 
         <TextView
             android:id="@+id/widget_change"
@@ -40,8 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:text="100%" />
+            android:paddingLeft="@dimen/widget_list_change_padding"
+            android:paddingRight="@dimen/widget_list_change_padding"
+            tools:text="100%" />
+
     </LinearLayout>
 </LinearLayout>

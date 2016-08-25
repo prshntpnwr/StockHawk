@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -10,7 +10,7 @@
         android:id="@+id/widget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
-        android:background="@color/material_blue_500">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,8 +33,7 @@
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            tools:listitem="@layout/widget_detail_list_item"
-            />
+            tools:listitem="@layout/widget_detail_list_item" />
 
         <TextView
             android:id="@+id/widget_empty"
@@ -44,5 +43,7 @@
             android:padding="8dp"
             android:text="@string/empty_view_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
     </FrameLayout>
+
 </LinearLayout>

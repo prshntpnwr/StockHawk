@@ -20,5 +20,7 @@
     <dimen name="widget_detail_default_height">180dp</dimen>
     <dimen name="widget_detail_min_resize_width">220dp</dimen>
     <dimen name="widget_detail_min_resize_height">@dimen/widget_detail_default_height</dimen>
+    <dimen name="widget_list_padding_right">10dp</dimen>
+    <dimen name="widget_list_change_padding">3dp</dimen>
 
 </resources>
