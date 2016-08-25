@@ -10,7 +10,7 @@
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:background="@drawable/touch_selector_white">
+    android:background="?attr/selectableItemBackground">
     <!--android:background="?attr/selectableItemBackground" -->
 
     <TextView
