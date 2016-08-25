@@ -84,7 +84,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
 
                     if (data.getInt(data.getColumnIndex(QuoteColumns.ISUP)) == 1) {
                         views.setInt(R.id.widget_change, "setBackgroundResource",
-                                android.graphics.Color.BLACK);
+                                R.drawable.percent_change_pill_green);
                     } else {
                         views.setInt(R.id.widget_change, "setBackgroundResource",
                                 R.drawable.percent_change_pill_red);

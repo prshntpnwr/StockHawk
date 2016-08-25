@@ -280,5 +280,4 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
         sendBroadcast(intent);
     }
-
 }
