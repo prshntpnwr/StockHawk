@@ -8,6 +8,8 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -100,7 +102,9 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
                             intent.putExtra(QuoteColumns.BIDPRICE,
                                     mCursor.getString(mCursor.getColumnIndex(QuoteColumns.BIDPRICE)));
-                            startActivity(intent);
+                            ActivityOptionsCompat activityOptions =
+                                    ActivityOptionsCompat.makeSceneTransitionAnimation(MyStocksActivity.this);
+                            ActivityCompat.startActivity(MyStocksActivity.this, intent, activityOptions.toBundle());
                         }
                     }
                 }));

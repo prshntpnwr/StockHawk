@@ -14,6 +14,11 @@
         <item name="popupTheme">@style/Theme.AppCompat.Light</item>
     </style>
 
+
+    <style name="AppTheme.Main" parent="@style/AppTheme" />
+
+    <style name="AppTheme.Details" parent="@style/AppTheme" />
+
     <style name="PercentChangeTextStyle">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#FFF</item>
