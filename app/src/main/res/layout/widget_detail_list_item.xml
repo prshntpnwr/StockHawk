@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:id="@+id/widget_list_item"
-    android:background="?attr/selectableItemBackground">
+    android:background="@drawable/touch_selector_white">
 
     <TextView
         android:id="@+id/widget_stock_symbol"

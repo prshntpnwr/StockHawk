@@ -182,7 +182,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     public void onResume() {
         super.onResume();
         getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
-        updateEmptyView();
     }
 
     public void networkToast() {
@@ -210,10 +209,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
+      /*  //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        } */
 
         if (id == R.id.action_change_units) {
             // this is for changing stock changes from percent value to dollar value
