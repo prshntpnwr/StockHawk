@@ -41,38 +41,19 @@
         <TextView
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="@string/stock_detail_extra_first"
+            android:text="@string/stock_detail_extra_bid"
             android:textColor="@color/detail_accent_label"
             android:textSize="20sp"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 
-
         <TextView
-            android:id="@+id/stock_detail_first"
+            android:id="@+id/stock_detail_bid"
             android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@android:color/white"
             app:layout_gravity="fill"
-            tools:text="29/6/2016" />
-
-        <TextView
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="@string/stock_detail_extra_last"
-            android:textColor="@color/detail_accent_label"
-            android:textSize="20sp"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-
-        <TextView
-            android:id="@+id/stock_detail_last"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            tools:text="29/6/2016" />
+            tools:text="214.06" />
 
         <TextView
             android:fontFamily="sans-serif"
@@ -94,20 +75,36 @@
         <TextView
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="@string/stock_detail_extra_bid"
+            android:text="@string/stock_detail_extra_first"
             android:textColor="@color/detail_accent_label"
             android:textSize="20sp"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 
-
         <TextView
-            android:id="@+id/stock_detail_bid"
+            android:id="@+id/stock_detail_first"
             android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@android:color/white"
             app:layout_gravity="fill"
-            tools:text="214.06" />
+            tools:text="29/6/2016" />
+
+        <TextView
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="@string/stock_detail_extra_last"
+            android:textColor="@color/detail_accent_label"
+            android:textSize="20sp"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/stock_detail_last"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@android:color/white"
+            app:layout_gravity="fill"
+            tools:text="29/6/2016" />
 
     </android.support.v7.widget.GridLayout>
 

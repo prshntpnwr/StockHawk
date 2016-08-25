@@ -75,7 +75,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/detail_accent_label" />
 
-
             <TextView
                 android:id="@+id/stock_detail_first"
                 android:fontFamily="sans-serif"
