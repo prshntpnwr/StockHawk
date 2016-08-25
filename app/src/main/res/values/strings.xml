@@ -51,4 +51,9 @@
     <string name="a11y_graph">Graph: <xliff:g id="low">%1$s</xliff:g></string>
     <string name="a11y_add_stock">Stock Added: <xliff:g id="low">%1$s</xliff:g></string>
 
+    <!--widget -->
+    <string name="widget_title">Stock Hawk</string>
+    <string name="title_widget_detail">Stock Hawk Detail</string>
+
+
 </resources>
