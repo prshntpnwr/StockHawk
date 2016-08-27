@@ -45,6 +45,7 @@ public class StockTaskService extends GcmTaskService {
     private Context mContext;
     private StringBuilder mStoredSymbols = new StringBuilder();
     private boolean isUpdate;
+    boolean isFetchOk;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_SERVER_INVALID, STOCK_STATUS_UNKNOWN})
@@ -156,6 +157,7 @@ public class StockTaskService extends GcmTaskService {
 
                     if(batchOperations != null && batchOperations.size() > 0) {
                         mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY, batchOperations);
+                        //sendBroadcast(isFetchOk);
                     }else{
                         Intent intent = new Intent();
                         intent.setAction("com.sam_chordas.android.stockhawk.service.InvalidStockSymbol");
@@ -171,6 +173,7 @@ public class StockTaskService extends GcmTaskService {
                 Utils.setStockStatus(mContext, STOCK_STATUS_SERVER_DOWN);
             }
         }
+        sendBroadcast(isFetchOk);
         return result;
     }
 

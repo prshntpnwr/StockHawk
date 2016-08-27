@@ -66,6 +66,9 @@
             </intent-filter>
         </receiver>
 
+
+
+
         <!-- Detail Widget -->
         <receiver
             android:name=".widget.DetailWidgetProvider"
