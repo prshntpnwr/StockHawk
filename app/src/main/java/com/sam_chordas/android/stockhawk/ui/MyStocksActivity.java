@@ -2,10 +2,12 @@ package com.sam_chordas.android.stockhawk.ui;
 
 import android.app.LoaderManager;
 import android.appwidget.AppWidgetManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -56,6 +58,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     private Context mContext;
     private Cursor mCursor;
     boolean isConnected;
+
+    public static String FETCH_COMPLETED_ACTION = "com.sam_chordas.android.stockhawk.ui.FetchCompleted";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,14 +182,30 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         }
     }
 
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
+        }
+    };
+
     @Override
     public void onResume() {
         super.onResume();
-        getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
+        //getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
+        IntentFilter intentFilter = new IntentFilter(FETCH_COMPLETED_ACTION);
+        registerReceiver(broadcastReceiver, intentFilter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
     }
 
     public void networkToast() {
-        Toast.makeText(mContext, getString(R.string.network_toast), Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, getString(R.string.network_toast),
+                Toast.LENGTH_SHORT).show();
     }
 
     public void restoreActionBar() {

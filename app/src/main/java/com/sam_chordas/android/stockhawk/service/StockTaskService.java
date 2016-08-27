@@ -20,6 +20,7 @@ import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
+import com.sam_chordas.android.stockhawk.ui.MyStocksActivity;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -56,6 +57,7 @@ public class StockTaskService extends GcmTaskService {
     public static final int STOCK_STATUS_UNKNOWN = 3;
 
     public StockTaskService() {
+
     }
 
     public StockTaskService(Context context) {
@@ -170,5 +172,12 @@ public class StockTaskService extends GcmTaskService {
             }
         }
         return result;
+    }
+
+    private void sendBroadcast (boolean success){
+        Intent intent = new Intent();
+        intent.setAction(MyStocksActivity.FETCH_COMPLETED_ACTION);
+        intent.putExtra("SUCCESS", success);
+        mContext.sendBroadcast(intent);
     }
 }

@@ -38,7 +38,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:support-annotations:23.1.0'
-    compile 'com.android.support:gridlayout-v7:23.1.0'
     compile('com.github.afollestad.material-dialogs:core:0.8.5.7@aar') {
         transitive = true
     }
