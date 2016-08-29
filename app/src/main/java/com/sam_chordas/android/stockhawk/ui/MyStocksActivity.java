@@ -59,7 +59,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     private Context mContext;
     private Cursor mCursor;
     boolean isConnected;
-    private String mIsFetchInProgress;
+    boolean mIsFetchInProgress;
 
     private String LOG_TAG = MyStocksActivity.class.getSimpleName();
 
@@ -193,7 +193,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         @Override
         public void onReceive(Context context, Intent intent) {
             getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
-
+            mIsFetchInProgress = true;
         }
     };
 
