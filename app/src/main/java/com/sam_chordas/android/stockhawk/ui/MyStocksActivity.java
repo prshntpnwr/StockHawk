@@ -59,6 +59,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     private Context mContext;
     private Cursor mCursor;
     boolean isConnected;
+    private String mIsFetchInProgress;
 
     private String LOG_TAG = MyStocksActivity.class.getSimpleName();
 
@@ -192,6 +193,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         @Override
         public void onReceive(Context context, Intent intent) {
             getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
+
         }
     };
 
@@ -200,6 +202,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         super.onResume();
         //getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
         IntentFilter intentFilter = new IntentFilter(FETCH_COMPLETED_ACTION);
+        IntentFilter intentFilter1 = new IntentFilter(FETCH_PROGRESS_ACTION);
         registerReceiver(broadcastReceiver, intentFilter);
     }
 

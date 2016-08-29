@@ -46,7 +46,7 @@ public class StockTaskService extends GcmTaskService {
     private StringBuilder mStoredSymbols = new StringBuilder();
     private boolean isUpdate;
     boolean isFetchOk;
-    public final String isFetchingInProgress = "progress";
+    boolean isFetchingInProgress;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_SERVER_INVALID, STOCK_STATUS_UNKNOWN})
@@ -187,7 +187,7 @@ public class StockTaskService extends GcmTaskService {
         mContext.sendBroadcast(intent);
     }
 
-    private void sendProgress (String progress) {
+    private void sendProgress (boolean progress) {
         Intent intent = new Intent();
         intent.setAction(MyStocksActivity.FETCH_PROGRESS_ACTION);
         intent.putExtra("PROGRESS", progress);
