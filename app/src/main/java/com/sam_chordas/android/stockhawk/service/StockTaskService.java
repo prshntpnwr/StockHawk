@@ -46,6 +46,7 @@ public class StockTaskService extends GcmTaskService {
     private StringBuilder mStoredSymbols = new StringBuilder();
     private boolean isUpdate;
     boolean isFetchOk;
+    public final String isFetchingInProgress = "progress";
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_SERVER_INVALID, STOCK_STATUS_UNKNOWN})
@@ -80,6 +81,8 @@ public class StockTaskService extends GcmTaskService {
         if (mContext == null) {
             mContext = this;
         }
+        sendProgress(isFetchingInProgress);
+
         StringBuilder urlStringBuilder = new StringBuilder();
         try {
             // Base URL for the Yahoo query
@@ -110,7 +113,6 @@ public class StockTaskService extends GcmTaskService {
                             initQueryCursor.getString(initQueryCursor.getColumnIndex("symbol")) + "\",");
                     initQueryCursor.moveToNext();
                 }
-                mStoredSymbols.replace(mStoredSymbols.length() - 1, mStoredSymbols.length(), ")");
                 try {
                     urlStringBuilder.append(URLEncoder.encode(mStoredSymbols.toString(), "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
@@ -173,14 +175,22 @@ public class StockTaskService extends GcmTaskService {
                 Utils.setStockStatus(mContext, STOCK_STATUS_SERVER_DOWN);
             }
         }
-        sendBroadcast(isFetchOk);
+        sendSuccess(isFetchOk);
+
         return result;
     }
 
-    private void sendBroadcast (boolean success){
+    private void sendSuccess (boolean success){
         Intent intent = new Intent();
         intent.setAction(MyStocksActivity.FETCH_COMPLETED_ACTION);
         intent.putExtra("SUCCESS", success);
+        mContext.sendBroadcast(intent);
+    }
+
+    private void sendProgress (String progress) {
+        Intent intent = new Intent();
+        intent.setAction(MyStocksActivity.FETCH_PROGRESS_ACTION);
+        intent.putExtra("PROGRESS", progress);
         mContext.sendBroadcast(intent);
     }
 }
