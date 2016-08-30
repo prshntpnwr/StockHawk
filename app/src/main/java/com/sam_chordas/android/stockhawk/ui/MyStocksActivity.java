@@ -193,10 +193,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
-                if (intent.getAction().equals("FETCH_COMPLETED_ACTION")) {
+                if (intent.getAction().equals(FETCH_COMPLETED_ACTION)) {
                     mIsFetchInProgress = false;
                     getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
-                } else if (intent.getAction().equals("FETCH_PROGRESS_ACTION")){
+                } else if (intent.getAction().equals(FETCH_PROGRESS_ACTION)){
                     mIsFetchInProgress = true;
                 }
             }
