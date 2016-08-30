@@ -192,8 +192,14 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
-            mIsFetchInProgress = true;
+            if (intent != null) {
+                if (intent.getAction().equals("FETCH_COMPLETED_ACTION")) {
+                    mIsFetchInProgress = false;
+                    getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, MyStocksActivity.this);
+                } else if (intent.getAction().equals("FETCH_PROGRESS_ACTION")){
+                    mIsFetchInProgress = true;
+                }
+            }
         }
     };
 
@@ -202,7 +208,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         super.onResume();
         //getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
         IntentFilter intentFilter = new IntentFilter(FETCH_COMPLETED_ACTION);
-        IntentFilter intentFilter1 = new IntentFilter(FETCH_PROGRESS_ACTION);
+        intentFilter.addAction(FETCH_PROGRESS_ACTION);
         registerReceiver(broadcastReceiver, intentFilter);
     }
 

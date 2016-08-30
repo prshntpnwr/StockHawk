@@ -77,11 +77,11 @@ public class StockTaskService extends GcmTaskService {
 
     @Override
     public int onRunTask(TaskParams params) {
+        sendProgress(isFetchingInProgress);
         Cursor initQueryCursor;
         if (mContext == null) {
             mContext = this;
         }
-        sendProgress(isFetchingInProgress);
 
         StringBuilder urlStringBuilder = new StringBuilder();
         try {
