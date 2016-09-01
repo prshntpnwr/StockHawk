@@ -63,8 +63,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
     private String LOG_TAG = MyStocksActivity.class.getSimpleName();
 
-    public static String FETCH_COMPLETED_ACTION = "com.sam_chordas.android.stockhawk.ui.FetchCompleted";
-    public static String FETCH_PROGRESS_ACTION = "com.sam_chordas.android.stockhawk.ui.FetchProgress";
+   // public static String FETCH_COMPLETED_ACTION = "com.sam_chordas.android.stockhawk.ui.FetchCompleted";
+   // public static String FETCH_PROGRESS_ACTION = "com.sam_chordas.android.stockhawk.ui.FetchProgress";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +189,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         }
     }
 
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+/*    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
@@ -201,21 +201,21 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 }
             }
         }
-    };
+    };*/
 
     @Override
     public void onResume() {
         super.onResume();
-        //getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
-        IntentFilter intentFilter = new IntentFilter(FETCH_COMPLETED_ACTION);
-        intentFilter.addAction(FETCH_PROGRESS_ACTION);
-        registerReceiver(broadcastReceiver, intentFilter);
+        getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
+       // IntentFilter intentFilter = new IntentFilter(FETCH_COMPLETED_ACTION);
+       // intentFilter.addAction(FETCH_PROGRESS_ACTION);
+       // registerReceiver(broadcastReceiver, intentFilter);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        unregisterReceiver(broadcastReceiver);
+        //unregisterReceiver(broadcastReceiver);
     }
 
     public void networkToast() {
@@ -271,13 +271,14 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        if (!mIsFetchInProgress) {
-            mCursorAdapter.swapCursor(data);
-            mCursor = data;
-        } else {
-            Log.d(LOG_TAG, "Fetch in progress -> Skipping CursorAdapter swap!");
-        }
-
+        //if (!mIsFetchInProgress) {
+        //    mCursorAdapter.swapCursor(data);
+        //    mCursor = data;
+        //} else {
+        //    Log.d(LOG_TAG, "Fetch in progress -> Skipping CursorAdapter swap!");
+        //}
+        mCursorAdapter.swapCursor(data);
+        mCursor = data;
         updateEmptyView();
         updateWidget();
     }
