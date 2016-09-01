@@ -99,7 +99,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
         public void onChanged() {
             super.onChanged();
             dataIsValid = true;
-            notifyDataSetChanged();
+            //notifyDataSetChanged();
         }
 
         @Override

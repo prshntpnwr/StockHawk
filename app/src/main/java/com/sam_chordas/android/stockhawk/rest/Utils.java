@@ -73,30 +73,35 @@ public class Utils {
     }
 
     public static String truncateBidPrice(String bidPrice) {
-        if (bidPrice != null) {
+        try {
             bidPrice = String.format("%.2f", Float.parseFloat(bidPrice));
-            return bidPrice;
         }
-        else
-            return null;
+        catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+        return bidPrice;
     }
 
     public static String truncateChange(String change, boolean isPercentChange) {
-        String weight = change.substring(0, 1);
-        String ampersand = "";
+        try {
+            String weight = change.substring(0, 1);
+            String ampersand = "";
 
-        if (isPercentChange) {
-            ampersand = change.substring(change.length() - 1, change.length());
-            change = change.substring(0, change.length() - 1);
+            if (isPercentChange) {
+                ampersand = change.substring(change.length() - 1, change.length());
+                change = change.substring(0, change.length() - 1);
+            }
+            change = change.substring(1, change.length());
+            double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
+            change = String.format("%.2f", round);
+            StringBuffer changeBuffer = new StringBuffer(change);
+            changeBuffer.insert(0, weight);
+            changeBuffer.append(ampersand);
+            change = changeBuffer.toString();
+            //return change;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
-
-        change = change.substring(1, change.length());
-        double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
-        change = String.format("%.2f", round);
-        StringBuffer changeBuffer = new StringBuffer(change);
-        changeBuffer.insert(0, weight);
-        changeBuffer.append(ampersand);
-        change = changeBuffer.toString();
         return change;
     }
 

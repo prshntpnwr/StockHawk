@@ -45,8 +45,6 @@ public class StockTaskService extends GcmTaskService {
     private Context mContext;
     private StringBuilder mStoredSymbols = new StringBuilder();
     private boolean isUpdate;
-    //boolean isFetchOk;
-    //boolean isFetchingInProgress;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_SERVER_INVALID, STOCK_STATUS_UNKNOWN})
@@ -77,7 +75,6 @@ public class StockTaskService extends GcmTaskService {
 
     @Override
     public int onRunTask(TaskParams params) {
-        //sendProgress(isFetchingInProgress);
         Cursor initQueryCursor;
         if (mContext == null) {
             mContext = this;
@@ -154,7 +151,7 @@ public class StockTaskService extends GcmTaskService {
                         contentValues.put(QuoteColumns.ISCURRENT, 0);
                         mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                                 null, null);
-                        updateOperation = builderBatxhUpdateOperation();
+                        updateOperation = builderBatchUpdateOperation();
                     }
 
                     //mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
@@ -163,8 +160,10 @@ public class StockTaskService extends GcmTaskService {
                     ArrayList<ContentProviderOperation> batchOperations = Utils.quoteJsonToContentVals(getResponse, mContext);
 
                     if(batchOperations != null && batchOperations.size() > 0) {
+                        if (updateOperation != null) {
+                            batchOperations.add(0,updateOperation);
+                        }
                         mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY, batchOperations);
-                        //sendBroadcast(isFetchOk);
                     }else{
                         Intent intent = new Intent();
                         intent.setAction("com.sam_chordas.android.stockhawk.service.InvalidStockSymbol");
@@ -180,30 +179,16 @@ public class StockTaskService extends GcmTaskService {
                 Utils.setStockStatus(mContext, STOCK_STATUS_SERVER_DOWN);
             }
         }
-       // sendSuccess(isFetchOk);
 
         return result;
     }
 
     //New method to add the update operation to the list
-    private ContentProviderOperation builderBatxhUpdateOperation() {
+    private ContentProviderOperation builderBatchUpdateOperation() {
         ContentProviderOperation.Builder builder = ContentProviderOperation.newUpdate(
                 QuoteProvider.Quotes.CONTENT_URI);
         builder.withValue(QuoteColumns.ISCURRENT, 0);
         return builder.build();
     }
 
-   /* private void sendSuccess (boolean success){
-        Intent intent = new Intent();
-        intent.setAction(MyStocksActivity.FETCH_COMPLETED_ACTION);
-        intent.putExtra("SUCCESS", success);
-        mContext.sendBroadcast(intent);
-    }
-
-    private void sendProgress (boolean progress) {
-        Intent intent = new Intent();
-        intent.setAction(MyStocksActivity.FETCH_PROGRESS_ACTION);
-        intent.putExtra("PROGRESS", progress);
-        mContext.sendBroadcast(intent);
-    } */
 }
