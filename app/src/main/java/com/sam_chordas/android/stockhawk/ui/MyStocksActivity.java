@@ -292,3 +292,5 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         sendBroadcast(intent);
     }
 }
+
+//DT20163633275

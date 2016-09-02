@@ -179,7 +179,6 @@ public class StockTaskService extends GcmTaskService {
                 Utils.setStockStatus(mContext, STOCK_STATUS_SERVER_DOWN);
             }
         }
-
         return result;
     }
 
