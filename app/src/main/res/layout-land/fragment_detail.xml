@@ -67,40 +67,21 @@
             <TextView
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
-                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
-                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
-                android:paddingTop="@dimen/detail_view_extra_padding"
-                android:text="@string/stock_detail_extra_first"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/detail_accent_label" />
-
-            <TextView
-                android:id="@+id/stock_detail_first"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@android:color/white"
-                tools:text="29/6/2016" />
-
-            <TextView
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
                 android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingTop="@dimen/detail_view_extra_padding"
-                android:text="@string/stock_detail_extra_last"
+                android:text="@string/stock_detail_extra_bid"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/detail_accent_label" />
 
             <TextView
-                android:id="@+id/stock_detail_last"
+                android:id="@+id/stock_detail_bid"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/white"
-                tools:text="29/6/2016" />
+                tools:text="214.06" />
 
             <TextView
                 android:fontFamily="sans-serif"
@@ -124,20 +105,39 @@
             <TextView
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
+                android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
                 android:paddingTop="@dimen/detail_view_extra_padding"
-                android:text="@string/stock_detail_extra_bid"
+                android:text="@string/stock_detail_extra_first"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/detail_accent_label" />
 
             <TextView
-                android:id="@+id/stock_detail_bid"
+                android:id="@+id/stock_detail_first"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/white"
-                tools:text="214.06" />
+                tools:text="29/6/2016" />
+
+            <TextView
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+                android:paddingTop="@dimen/detail_view_extra_padding"
+                android:text="@string/stock_detail_extra_last"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/detail_accent_label" />
+
+            <TextView
+                android:id="@+id/stock_detail_last"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                tools:text="29/6/2016" />
 
             <android.support.v7.widget.Space
                 app:layout_columnSpan="2"
