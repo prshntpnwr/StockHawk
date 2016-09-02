@@ -23,7 +23,7 @@ Screenshots :
 
 <img width="40%" src="/art/stockhawk_main.png" />     <img width="40%" src="/art/stockhawk_detail.png" />
 
-<img width="30%" src="/art/stockhawk_widget.png" />    <image width ="40%" src="/art/stockhawk_detail_land" />  
+<img width="30%" src="/art/stockhawk_widget.png" />     <image width ="40%" src="/art/stockhawk_detail_land" />  
 
 
 
