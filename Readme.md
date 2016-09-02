@@ -14,7 +14,7 @@ The features and libraries used in Stock Hawk are listed below :
 - Collection Widget . 
 - Toast and SnackBar to show short messages.
 - Support Right-to-Left Layouts .
-- Accessibility (A11y Testing) with Talkback and Localization (L10n).
+- Accessibility (A11y Testing with Talkback) and Localization (L10n).
 - Google Cloud messaging (GCM) .
 - okhttp with JSON.
 
