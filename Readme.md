@@ -5,21 +5,22 @@ This Repository contain Project 3 of Android Development by Udacity. The purpose
 The features and libraries used in Stock Hawk are listed below :
 
 - GridLayout implementation.
-- RecyclerView .
+- RecyclerView.
 - Floating Action Button.
-- BetterKnife .
+- BetterKnife.
 - WilliamChart for stock detail graph.
 - ToolBar instead of ActionBar.
 - Transition Animations.
-- Collection Widget . 
+- Collection Widget. 
 - Toast and SnackBar to show short messages.
 - Support Right-to-Left Layouts .
 - Accessibility (A11y Testing with Talkback) and Localization (L10n).
-- Google Cloud messaging (GCM) .
+- Google Cloud messaging (GCM).
 - okhttp with JSON.
 
 Screenshots :
 ---------------------
+
 
 <img width="40%" src="/art/stockhawk_main.png" />     <img width="40%" src="/art/stockhawk_detail.png" />
 
