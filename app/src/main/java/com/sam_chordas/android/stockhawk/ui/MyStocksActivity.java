@@ -2,12 +2,10 @@ package com.sam_chordas.android.stockhawk.ui;
 
 import android.app.LoaderManager;
 import android.appwidget.AppWidgetManager;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -292,5 +290,3 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         sendBroadcast(intent);
     }
 }
-
-//DT20163633275

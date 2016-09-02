@@ -20,7 +20,7 @@
 
     <string name="pref_stock_status_key" translatable="false">stock-status</string>
 
-    <string name="invalid_stock_symbol">The Stock you try to add is invalid. Please try another Stock Symbol.</string>
+    <string name="invalid_stock_symbol">The Stock you are trying to add is invalid. Please try another Stock Symbol.</string>
 
     <string name="symbol_detail" formatted="true" translatable="false">%s Detail</string>
 

@@ -98,7 +98,6 @@ public class Utils {
             changeBuffer.insert(0, weight);
             changeBuffer.append(ampersand);
             change = changeBuffer.toString();
-            //return change;
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
