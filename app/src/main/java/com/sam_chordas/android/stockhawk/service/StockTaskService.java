@@ -148,9 +148,9 @@ public class StockTaskService extends GcmTaskService {
                     ContentProviderOperation updateOperation = null;
                     // update ISCURRENT to 0 (false) so new data is current
                     if (isUpdate) {
-                        contentValues.put(QuoteColumns.ISCURRENT, 0);
-                        mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
-                                null, null);
+                        //contentValues.put(QuoteColumns.ISCURRENT, 0);
+                        //mContext.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
+                        //          null, null);
                         updateOperation = builderBatchUpdateOperation();
                     }
 
