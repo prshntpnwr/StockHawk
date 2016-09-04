@@ -43,7 +43,7 @@
             android:gravity="center_vertical"
             android:text="@string/stock_detail_extra_bid"
             android:textColor="@color/detail_accent_label"
-            android:textSize="20sp"
+            android:textSize="@dimen/detail_extra_grid_text_size"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 
@@ -60,7 +60,7 @@
             android:gravity="center_vertical"
             android:text="@string/stock_detail_extra_currency"
             android:textColor="@color/detail_accent_label"
-            android:textSize="20sp"
+            android:textSize="@dimen/detail_extra_grid_text_size"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 
@@ -77,7 +77,7 @@
             android:gravity="center_vertical"
             android:text="@string/stock_detail_extra_first"
             android:textColor="@color/detail_accent_label"
-            android:textSize="20sp"
+            android:textSize="@dimen/detail_extra_grid_text_size"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 
@@ -94,7 +94,7 @@
             android:gravity="center_vertical"
             android:text="@string/stock_detail_extra_last"
             android:textColor="@color/detail_accent_label"
-            android:textSize="20sp"
+            android:textSize="@dimen/detail_extra_grid_text_size"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
 

@@ -22,5 +22,16 @@
     <dimen name="widget_detail_min_resize_height">@dimen/widget_detail_default_height</dimen>
     <dimen name="widget_list_padding_right">10dp</dimen>
     <dimen name="widget_list_change_padding">3dp</dimen>
+    <dimen name="widget_detail_padding">8dp</dimen>
+
+    <!--list_item_quote-->
+    <dimen name="list_item_quote_parent_height">72dp</dimen>
+    <dimen name="padding_list_item">16dp</dimen>
+    <dimen name="padding_list_item_bid_text">10dp</dimen>
+    <dimen name="padding_list_item_change_text">10dp</dimen>
+
+    <!--detail_extra_grid-->
+    <dimen name="detail_extra_grid_text_size">20sp</dimen>
+
 
 </resources>
