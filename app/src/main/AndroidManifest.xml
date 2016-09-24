@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/stock_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -65,9 +65,6 @@
                 <action android:name="com.sam_chordas.android.stockhawk.service.InvalidStockSymbol" />
             </intent-filter>
         </receiver>
-
-
-
 
         <!-- Detail Widget -->
         <receiver
